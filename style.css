@@ -1,0 +1,251 @@
+ body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffc0cb 0%, #ff69b4 100%); /* Gradiente rosa mais intenso */
+    font-family: 'Georgia', serif; /* Fonte mais clássica e romântica */
+    text-align: center;
+    overflow: hidden;
+    margin: 0;
+    color: #4a0033; /* Cor de texto mais escura para contraste */
+}
+
+.declaration-container { /* Renomeado de 'proposal-container' para 'declaration-container' */
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.95); /* Fundo branco semitransparente */
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    box-sizing: border-box; /* Garante que padding não estoure a largura */
+}
+
+.main-screen {
+    opacity: 0; /* Começa invisível para as animações de entrada */
+    animation: fadeIn 1s forwards; /* Container principal aparece suavemente */
+}
+
+h1, h2, h3, p {
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+h1 {
+    color: #880e4f; /* Cor mais escura para destaque */
+    font-size: 3em;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+h2 {
+    color: #ad1457;
+    font-size: 2.2em;
+}
+
+h3 {
+    color: #d81b60;
+    font-size: 1.8em;
+    margin-top: 30px;
+}
+
+p {
+    color: #6a1b9a; /* Roxo mais escuro para o corpo do texto */
+    font-size: 1.3em;
+}
+
+
+.button-group {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.btn {
+    padding: 15px 30px;
+    font-size: 1.3em;
+    cursor: pointer;
+    border: none;
+    border-radius: 50px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.yes {
+    background-color: #ec407a; /* Rosa mais forte */
+    color: white;
+}
+.yes:hover {
+    background-color: #d81b60;
+    box-shadow: 0 0 20px rgba(236, 64, 122, 0.8);
+    transform: translateY(-3px); /* Leve efeito 3D no hover */
+}
+
+.no { /* Renomeado para uma resposta positiva */
+    background-color: #ab47bc; /* Roxo */
+    color: white;
+}
+.no:hover {
+    background-color: #8e24aa;
+    box-shadow: 0 0 20px rgba(171, 71, 188, 0.8);
+    transform: translateY(-3px);
+}
+
+/* ------------------------------------------- */
+/* Interações e Animações (CSS Puro) */
+/* ------------------------------------------- */
+
+/* Animações de Entrada de Texto */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Aplicação das Animações com Atrasos */
+.fade-in-up { animation: fadeInUp 1s ease-out forwards; opacity: 0; }
+.slide-in-left { animation: slideInLeft 1s ease-out forwards; opacity: 0; }
+.fade-in { animation: fadeIn 1s ease-out forwards; opacity: 0; }
+.zoom-in { animation: zoomIn 1s ease-out forwards; opacity: 0; }
+.slide-in-right { animation: slideInRight 1s ease-out forwards; opacity: 0; }
+.scale-in { animation: scaleIn 1s ease-out forwards; opacity: 0; }
+
+/* Atrasos nas Animações */
+.delay-0 { animation-delay: 0.5s; }
+.delay-1 { animation-delay: 1.0s; }
+.delay-2 { animation-delay: 1.5s; }
+.delay-3 { animation-delay: 2.0s; }
+.delay-4 { animation-delay: 2.5s; }
+.delay-5 { animation-delay: 3.0s; }
+.delay-6 { animation-delay: 3.5s; } /* Para os botões */
+
+
+/* Tela de Sucesso */
+.hidden {
+    display: none;
+}
+
+.success-screen {
+    padding: 50px 0;
+    animation: fadeInUp 1s ease-out; /* Animação suave para a tela de sucesso */
+}
+
+.success-screen h2 {
+    color: #c2185b;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.success-screen p {
+    color: #7b1fa2;
+    font-size: 1.5em;
+}
+
+/* Animação de Coração para a tela de sucesso */
+.heart-animation {
+    width: 120px; /* Coração maior */
+    height: 108px;
+    position: relative;
+    margin: 20px auto 40px auto; /* Mais espaçamento */
+    animation: heartbeat 1.2s infinite; /* Batimento mais suave */
+}
+
+.heart-animation:before,
+.heart-animation:after {
+    content: "";
+    position: absolute;
+    background-color: #e91e63;
+    border-radius: 60px 60px 0 0; /* Ajuste para o coração maior */
+    width: 72px;
+    height: 108px;
+    transform: rotate(-45deg);
+    top: 0;
+    left: 24px;
+}
+
+.heart-animation:after {
+    left: -12px;
+    transform: rotate(45deg);
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.15); } /* Menos intenso para ser mais suave */
+    60% { transform: scale(1); }
+    100% { transform: scale(1); }
+}
+
+/* ------------------------------------------- */
+/* Animação de Partículas (Chuva de Corações/Confetes) */
+/* ------------------------------------------- */
+
+.particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.particle {
+    position: absolute;
+    width: 20px; /* Partículas maiores */
+    height: 20px;
+    background-color: #ff4081; /* Cor de coração mais vibrante */
+    transform: rotate(45deg);
+    opacity: 0;
+    animation: fall 5s linear infinite;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2); /* Sombra suave */
+}
+
+.particle:before,
+.particle:after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #ff4081;
+    border-radius: 50%;
+}
+.particle:before {
+    top: -10px;
+    left: 0;
+}
+.particle:after {
+    left: 10px;
+    top: 0;
+}
